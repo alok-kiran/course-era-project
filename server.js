@@ -19,9 +19,9 @@ app.get('/', function (req, res) {
 });
 
 app.post('/comments', (req, res) => {
-  const comment = req.body;
-  data.comment.push(comment);
-  res.send(data.comment).status(200);
+  const comments = req.body;
+  data.comments.push(comments);
+  res.send(data.comments).status(200);
 });
 
 app.post('/feedback', (req, res) => {
