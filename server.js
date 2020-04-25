@@ -14,10 +14,6 @@ app.get('/ping', function (req, res) {
  return res.send('pong');
 });
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 app.post('/comments', (req, res) => {
   const comments = req.body;
   data.comments.push(comments);
@@ -46,6 +42,10 @@ app.get('/leaders', (req, res) => {
   res.send(data.leaders).status(200);
 });
 app.use(express.static(path.join(__dirname, 'build')));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.listen(process.env.PORT || 3001, () => {
   console.log(`> Server running on PORT ${process.env.PORT || 3001}`)
 });
